@@ -32,3 +32,10 @@ API developed in Django + DRF for Prepi Challenge.
 ## 6. Access the localhost:8000/admin page on web and login with super user infos.
 ## 7. Go to 'Tokens' section, and copy the super user's token.
 ## 8. Now you can proceed to Front-end Setup.
+
+# Some util informations:
+- This project is connected with the Google Sheets API by the 'gspread' library (https://pypi.org/project/gspread/);
+- All functions and code related to Google Sheets API can be found in spreadsheet.py;
+- To get connected with the Google Sheet that the server is connected, click in the link: https://docs.google.com/spreadsheets/d/1w-mgy_DsnAaw6lFnV9xmeDfzQy2_iWIzUYjLUhX6SxA/edit?usp=sharing
+
+
