@@ -5,8 +5,8 @@ from users.models import User
 
 class Produto(models.Model):
     nome = models.CharField(verbose_name='Produto', max_length=50)
-    imagem = models.ImageField(upload_to='fileReceiver/', max_length=100)
     descricao = models.CharField(verbose_name='Descrição', max_length=100)
+    preco = models.DecimalField(max_digits=8, decimal_places=2)
     created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey('users.User', related_name='UserProduto', on_delete=models.CASCADE)
 

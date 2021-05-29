@@ -29,7 +29,6 @@ class ProdutoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProdutoSerializer
 
     def perform_destroy(self, instance):
-        # import ipdb; ipdb.set_trace()
         instance.delete()
 
         cpf = instance.user.cpf
@@ -37,8 +36,5 @@ class ProdutoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         totalProduto = UserSerializer.get_total_produtos(self, instance.user)
         updateTotalProduto(cpf, totalProduto)
         updateProdutoDate(cpf, cadastroProduto)
-        
-        
-        # instance.delete()
 
 

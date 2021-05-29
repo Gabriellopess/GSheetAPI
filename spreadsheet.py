@@ -9,38 +9,15 @@ def spreadsheet(value):
     values_list = worksheet.get('A1:F1')
     if values_list == []:
         worksheet.update('A1:F1', value)
-    else:
-        print('já existe')
 
 columns = [['Nome', 'CPF', 'Idade', 'User SignIn Date', 'Product SignIn Date', 'Produtos Totais']]
 spreadsheet(columns)
-
-# print(worksheet.get_all_records()[2].get('CPF'))
-# print(worksheet.get('B2:B7'))
-# print(worksheet.col_values(2)[1])
-# worksheet.update('A7', '02066639435')
 
 
 def createUser(json):
     #Criar usuário
     if type(json) == list and len(json) <= 4:
         worksheet.append_row(json)      
-    else:
-        print('not now')
-
-# def get_rowindex(string):
-#     #Identifica em qual linha se encontra o usuário a partir do seu cpf
-#     if type(string) == str:
-#         index = 0
-#         list = worksheet.get_all_records()
-#         for i in range(len(list)):
-#             if list[i].get('CPF') == string:
-#                 obj = list[i]
-#                 index = i
-#                 print(obj, index, i) 
-#         row = index + 2
-#         print(row)
-#         return row
 
 def get_rowindex(string):
     #Identifica em qual linha se encontra o usuário a partir do seu cpf
@@ -56,21 +33,17 @@ def get_rowindex(string):
         return row
 
 def updateUser(cpf, json):
-    if type(json) == list and type(cpf) == str and len(json) <= 4: 
+    if type(json) == list and type(cpf) == str and len(json) <= 6: 
         row = get_rowindex(cpf)
         cell_range = str('A'+str(row)+':F'+str(row))
         json_list = [json]
         worksheet.update(cell_range, json_list)
-    else:
-        print('not now')
 
 
 def deleteUser(cpf):
     if type(cpf) == str:
         row = get_rowindex(cpf)
         worksheet.delete_rows(row)
-    else:
-        print('not now')
 
 
 def updateProdutoDate(cpf, value):
@@ -85,4 +58,3 @@ def updateTotalProduto(cpf, value):
         row = get_rowindex(cpf)
         cell = str('F'+str(row))
         worksheet.update(cell, value)
-        print(cpf + " e " + cell)

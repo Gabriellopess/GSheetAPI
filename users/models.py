@@ -14,7 +14,7 @@ from datetime import date
 class User(AbstractUser):
     nome = models.CharField(max_length=50)
     data_nascimento = models.DateField(default = '2000-01-01')
-    cpf = CPFField('cpf')
+    cpf = CPFField('cpf', unique=True)
     email = models.EmailField(_('email address'), blank=True)
     created_at = models.DateField(auto_now_add=True)
     

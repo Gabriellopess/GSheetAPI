@@ -4,14 +4,17 @@ from users.serializers import UserSerializer
 from spreadsheet import updateTotalProduto, updateProdutoDate
 
 class ProdutoSerializer(serializers.ModelSerializer):
+    usuario = serializers.SerializerMethodField()
+
     class Meta:
         model = Produto
         fields = '__all__'
 
-    def create(self, validated_data):
-        # import ipdb; ipdb.set_trace()
-        produto = Produto.objects.create(**validated_data)
+    def get_usuario(self, obj):       
+        return obj.user.nome
 
+    def create(self, validated_data):
+        produto = Produto.objects.create(**validated_data)
 
         cpf = validated_data['user'].cpf
         cadastroProduto = str(UserSerializer.get_first_date(self, validated_data['user']))
