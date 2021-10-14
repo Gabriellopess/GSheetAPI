@@ -1,5 +1,5 @@
-# apiPrepiChallenge
-API developed in Django + DRF for Prepi Challenge.
+# GSheetsAPI
+API developed in Django + DRF and linking informations to a Google Sheets.
 
 # Project Setup step-by-step:
 ## 1. Initializing the virtual enviroment in project directory:
